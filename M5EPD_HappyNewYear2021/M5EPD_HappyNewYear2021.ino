@@ -22,7 +22,7 @@ char ssStr[3];  // SS
 struct tm timeInfo;
 
 // Timezone
-const int tz 9
+const int tz 9;
 
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = tz*3600;
