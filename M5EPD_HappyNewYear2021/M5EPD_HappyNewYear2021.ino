@@ -8,20 +8,24 @@
 char temStr[10];
 char humStr[10];
 
-float tem;
-float hum;
+float tem; // Temperatura
+float hum; // Humedad
 
-// Clock
-char yyStr[4];
-char moStr[4];
-char ddStr[4];
-char hhStr[4];
-char mmStr[4];
-char ssStr[4];
+// Date
+char yyStr[5];  // YYYY
+char moStr[3];  // MM
+char ddStr[3];  // DD
+// Time
+char hhStr[3];  // HH
+char mmStr[3];  // MM
+char ssStr[3];  // SS
 struct tm timeInfo;
 
+// Timezone
+const int tz 9
+
 const char* ntpServer = "pool.ntp.org";
-const long  gmtOffset_sec = 9*3600;
+const long  gmtOffset_sec = tz*3600;
 const int   daylightOffset_sec = 3600;
 
 int disp_flag = 0;
@@ -37,8 +41,6 @@ void setup()
 
 #ifdef USE_SD
     // Load font files from SD Card
-    //canvas.loadFont("/ipaexg.ttf", SD);
-    //canvas.loadFont("/Let_s_go_Digital_Regular.ttf", SD);
     //canvas.loadFont("/GenSenRounded-R.ttf", SD); // Load font files from SD Card
     canvas.loadFont("/CascadiaCode-Bold.ttf", SD); // Load font files from SD Card
 #endif
@@ -64,7 +66,6 @@ void setup()
 void disp_moo()
 {
     canvas.setTextSize(3);
-    //canvas.drawJpgUrl("https://m5stack.oss-cn-shenzhen.aliyuncs.com/image/example_pic/flower.jpg");
     canvas.drawJpgUrl("http://192.168.100.251/IMG_0756.jpg");
     canvas.pushCanvas(0,0,UPDATE_MODE_GC16);
 }
